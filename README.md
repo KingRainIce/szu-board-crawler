@@ -5,7 +5,7 @@
 如果这是交给其他部门同事维护，请先阅读完整交接文档：
 
 ```text
-/Users/ice/IdeaProjects/资料/backend_ingestion_guide.md
+backend_ingestion_guide.md
 ```
 
 那份文档会解释 Lychee Memoir 为什么需要公文通数据、Excel 每个字段的用途、后端如何入库、双方职责边界和验收标准。本 README 只保留运行命令和排错入口。
