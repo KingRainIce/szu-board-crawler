@@ -2,6 +2,14 @@
 
 这个目录用于在一台能访问深大公文通的电脑上定期运行爬虫，并把新抓到的公文通 Excel 上传到 Lychee Memoir 后端导入知识库。
 
+如果这是交给其他部门同事维护，请先阅读完整交接文档：
+
+```text
+/Users/ice/IdeaProjects/资料/backend_ingestion_guide.md
+```
+
+那份文档会解释 Lychee Memoir 为什么需要公文通数据、Excel 每个字段的用途、后端如何入库、双方职责边界和验收标准。本 README 只保留运行命令和排错入口。
+
 ## 1. 工作方式
 
 ```text
@@ -181,6 +189,14 @@ Content-Type: multipart/form-data
 file=@szu_board_incremental_YYYYMMDD.xlsx
 ```
 
+上传的 Excel 第一行字段建议固定为：
+
+```text
+date, department, category, title, url, content, attachments, fetched_at
+```
+
+最低可用要求是 `title`、`url`、`content` 非空；为了 Echo 搜索准确，建议完整提供全部字段。`url` 是后端幂等键，同一 URL 重复上传会更新，不会重复插入。
+
 ## 9. 安全注意
 
 - `config.yaml` 不提交 git。
@@ -188,4 +204,3 @@ file=@szu_board_incremental_YYYYMMDD.xlsx
 - Chrome 远程调试地址只绑定 `127.0.0.1`。
 - token 只允许调用公文通 Excel 上传接口，不给其他后台权限。
 - 后端按 URL 幂等导入，重复上传是安全的。
-
