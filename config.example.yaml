@@ -1,0 +1,21 @@
+api_base_url: "https://lychee-memoir.cn"
+ingest_token: "replace-with-SZU_BOARD_INGEST_TOKEN"
+
+chrome_debugger_address: "127.0.0.1:9222"
+chrome_user_data_dir: "~/.szu-board-chrome"
+chrome_path: ""
+
+crawler_script: "/Users/ice/IdeaProjects/资料/szu_board_cdp_scraper.py"
+crawl_overlap_days: 2
+detail_batch_size: 25
+checkpoint_every: 10
+delay_min: 0.5
+delay_max: 1.0
+
+output_dir: "~/lychee-szu-board-crawler/data"
+log_dir: "~/lychee-szu-board-crawler/logs"
+
+# 可选：仅保存在运行爬虫的本机，不要提交到 git。
+# v1 默认复用 Chrome 登录态；如果登录态失效，脚本会提示人工打开 Chrome 登录。
+username: ""
+password: ""
